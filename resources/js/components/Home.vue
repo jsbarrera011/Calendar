@@ -146,51 +146,51 @@ export default {
         generateDates(){
             this.arrDates = []
 
-            // var from = moment(this.dateFrom).format("YYYY/MM/DD")
-            // var to = moment(this.dateTo).format("YYYY/MM/DD")
-            // if(moment(from).format("MM") != moment(to).format("MM")){
-            //     this.headerName = moment(from).format("MMMM") + " " + moment(from).format("YYYY") + " - "+moment(to).format("MMMM") + " " + moment(to).format("YYYY")
-            // }else{
-            //     this.headerName = moment(from).format("MMMM") + " " +  moment(from).format("YYYY")
-            // }
-
-            // if(from > to){
-            //     this.$toast.warning("Invalid Date Parameter","WARNING",this.option)
-            //     return false
-            // }else{
-            //     for(var i = from;from <= to;from = moment(from).add(1,'day').format("YYYY/MM/DD")){
-            //         this.arrDates.push({
-            //             Day : moment(from).format("DD"),
-            //             DayName: moment(from).format("dddd").substring(0,3),
-            //             Month: moment(from).format("MMMM"),
-            //             Event: null,
-            //             Date : moment(from).format("YYYY/MM/DD")})
-            //     }
-            // }
-
-            var from = moment(new Date(this.dateFrom)).format("YYYY/MM/DD")
-            var to = moment(new Date(this.dateTo)).format("YYYY/MM/DD")
-
+            var from = moment(this.dateFrom).format("YYYY/MM/DD")
+            var to = moment(this.dateTo).format("YYYY/MM/DD")
+            if(moment(from).format("MM") != moment(to).format("MM")){
+                this.headerName = moment(from).format("MMMM") + " " + moment(from).format("YYYY") + " - "+moment(to).format("MMMM") + " " + moment(to).format("YYYY")
+            }else{
+                this.headerName = moment(from).format("MMMM") + " " +  moment(from).format("YYYY")
+            }
 
             if(from > to){
                 this.$toast.warning("Invalid Date Parameter","WARNING",this.option)
                 return false
             }else{
-                for(var i = from;from <= to;from = moment(new Date(from)).add(1,'day').format("YYYY/MM/DD")){
+                for(var i = from;from <= to;from = moment(from).add(1,'day').format("YYYY/MM/DD")){
                     this.arrDates.push({
-                        Day : moment(new Date(from)).format("DD"),
-                        DayName: moment(new Date(from)).format("dddd").substring(0,3),
-                        Month: moment(new Date(from)).format("MMMM"),
+                        Day : moment(from).format("DD"),
+                        DayName: moment(from).format("dddd").substring(0,3),
+                        Month: moment(from).format("MMMM"),
                         Event: null,
-                        Date : moment(new Date(from)).format("YYYY/MM/DD")})
+                        Date : moment(from).format("YYYY/MM/DD")})
                 }
             }
 
-            if(moment(new Date(from)).format("MM") != moment(new Date(to)).format("MM")){
-                this.headerName = moment(new Date(from)).format("MMMM") + " " + moment(new Date(from)).format("YYYY") + " - " + moment(new Date(to)).format("MMMM") + " " + moment(new Date(to)).format("YYYY")
-            }else{
-                this.headerName = moment(new Date(from)).format("MMMM") + " " +  moment(new Date(from)).format("YYYY")
-            }
+            // var from = moment(new Date(this.dateFrom)).format("YYYY/MM/DD")
+            // var to = moment(new Date(this.dateTo)).format("YYYY/MM/DD")
+
+
+            // if(from > to){
+            //     this.$toast.warning("Invalid Date Parameter","WARNING",this.option)
+            //     return false
+            // }else{
+            //     for(var i = from;from <= to;from = moment(new Date(from)).add(1,'day').format("YYYY/MM/DD")){
+            //         this.arrDates.push({
+            //             Day : moment(new Date(from)).format("DD"),
+            //             DayName: moment(new Date(from)).format("dddd").substring(0,3),
+            //             Month: moment(new Date(from)).format("MMMM"),
+            //             Event: null,
+            //             Date : moment(new Date(from)).format("YYYY/MM/DD")})
+            //     }
+            // }
+
+            // if(moment(new Date(from)).format("MM") != moment(new Date(to)).format("MM")){
+            //     this.headerName = moment(new Date(from)).format("MMMM") + " " + moment(new Date(from)).format("YYYY") + " - " + moment(new Date(to)).format("MMMM") + " " + moment(new Date(to)).format("YYYY")
+            // }else{
+            //     this.headerName = moment(new Date(from)).format("MMMM") + " " +  moment(new Date(from)).format("YYYY")
+            // }
             this.saveEvents()
         },
          saveEvents(){
